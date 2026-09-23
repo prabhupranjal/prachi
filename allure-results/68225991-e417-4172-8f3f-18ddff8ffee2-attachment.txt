@@ -1,0 +1,4 @@
+Application opened
+login done
+pim-hover done
+clicked on add employee button

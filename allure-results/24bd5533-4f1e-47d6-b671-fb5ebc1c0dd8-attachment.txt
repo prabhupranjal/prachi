@@ -1,0 +1,8 @@
+Application opened
+login done
+pim-hover done
+open employee list
+filter applied for employee search
+checkbox selected
+deleted
+logout done

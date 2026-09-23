@@ -1,0 +1,9 @@
+Application opened
+login done
+pim-hover done
+clicked on add employee button
+Saved
+clicked on edit button
+update lastname
+personal details updated
+logout done

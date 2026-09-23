@@ -1,0 +1,2049 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Edit_Employee.spec.ts >> update_employee
+- Location: tests\Edit_Employee.spec.ts:3:5
+
+# Error details
+
+```
+Error: locator.click: Error: strict mode violation: locator('.savebutton') resolved to 22 elements:
+    1) <input value="Save" title="Save" type="button" name="EditMain" id="btnEditPers" class="savebutton" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="editEmpMain(); return false;"/> aka locator('#btnEditPers')
+    2) <input value="Save" title="Save" type="button" name="EditMain" id="btnEditJob" class="savebutton" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="editEmpMain(); return false;"/> aka locator('#btnEditJob')
+    3) <input value="Save" title="Save" type="button" class="savebutton" id="btnAddContract" name="btnAddContract" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="addConExt(); return false;"/> aka locator('#btnAddContract')
+    4) <input value="Save" title="Save" type="button" class="savebutton" id="btnSaveJobHist" name="btnSaveJobHist" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="addJobHistoryItem(); return false;"/> aka locator('#btnSaveJobHist')
+    5) <input value="Save" title="Save" type="button" class="savebutton" id="btnAddDependent" name="btnAddDependent" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="addDependent(); return false;"/> aka locator('#btnAddDependent')
+    6) <input value="Save" title="Save" type="button" class="savebutton" id="btnAddChildren" name="btnAddChildren" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="addChildren(); return false;"/> aka locator('#btnAddChildren')
+    7) <input value="Save" title="Save" type="button" name="EditMain" class="savebutton" id="btnEditContact" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="editEmpMain(); return false;"/> aka locator('#btnEditContact')
+    8) <input value="Save" title="Save" type="button" class="savebutton" id="btnAddEContact" name="btnAddEContact" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="addEContact(); return false;"/> aka locator('#btnAddEContact')
+    9) <input value="Save" title="Save" type="button" class="savebutton" id="btnAddAttachment" name="btnAddAttachment" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="addAttach(); return false;"/> aka locator('#btnAddAttachment')
+    10) <input value="Save" title="Save" type="button" class="savebutton" id="btnAddEducation" name="btnAddEducation" onmouseout="moutButton(this);" onmouseover="moverButton(this);" onclick="addEXTEducation(); return false;"/> aka locator('#btnAddEducation')
+    ...
+
+Call log:
+  - waiting for locator('//iframe[@id=\'rightMenu\']').contentFrame().locator('.savebutton')
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=f1e1]:
+  - list [ref=f1e5]:
+    - listitem [ref=f1e6]: Welcome sureshit
+    - listitem [ref=f1e7]:
+      - link "Change Password" [ref=f1e8] [cursor=pointer]:
+        - /url: ./lib/controllers/CentralController.php?mtcode=CPW&capturemode=updatemode&id=USR012
+    - listitem [ref=f1e9]:
+      - link "Logout" [ref=f1e10] [cursor=pointer]:
+        - /url: ./index.php?ACT=logout
+  - generic [ref=f1e11]:
+    - list:
+      - listitem [ref=f1e12] [cursor=pointer]:
+        - link "Admin" [ref=f1e13]:
+          - /url: ./index.php?menu_no_top=eim
+        - list [ref=f1e15]:
+          - listitem [ref=f1e16]:
+            - link "Company Info" [ref=f1e17]:
+              - /url: "#"
+            - list [ref=f1e19]:
+              - listitem [ref=f1e20]:
+                - link "General" [ref=f1e21]:
+                  - /url: index.php?uniqcode=GEN&menu_no_top=eim
+              - listitem [ref=f1e23]:
+                - link "Locations" [ref=f1e24]:
+                  - /url: index.php?uniqcode=LOC&menu_no_top=eim
+              - listitem [ref=f1e26]:
+                - link "Company Structure" [ref=f1e27]:
+                  - /url: index.php?uniqcode=CST&menu_no_top=eim
+              - listitem [ref=f1e29]:
+                - link "Company Property" [ref=f1e30]:
+                  - /url: index.php?uniqcode=TCP&menu_no_top=eim&pageNo=1
+          - listitem [ref=f1e32]:
+            - link "Job" [ref=f1e33]:
+              - /url: "#"
+            - list [ref=f1e35]:
+              - listitem [ref=f1e36]:
+                - link "Job Titles" [ref=f1e37]:
+                  - /url: index.php?uniqcode=JOB&menu_no_top=eim
+              - listitem [ref=f1e39]:
+                - link "Job Specifications" [ref=f1e40]:
+                  - /url: index.php?uniqcode=SPC&menu_no_top=eim
+              - listitem [ref=f1e42]:
+                - link "Pay Grades" [ref=f1e43]:
+                  - /url: index.php?uniqcode=SGR&menu_no_top=eim
+              - listitem [ref=f1e45]:
+                - link "Employment Status" [ref=f1e46]:
+                  - /url: index.php?uniqcode=EST&menu_no_top=eim
+              - listitem [ref=f1e48]:
+                - link "EEO Job Categories" [ref=f1e49]:
+                  - /url: index.php?uniqcode=EEC&menu_no_top=eim
+          - listitem [ref=f1e51]:
+            - link "Qualification" [ref=f1e52]:
+              - /url: "#"
+            - list [ref=f1e54]:
+              - listitem [ref=f1e55]:
+                - link "Education" [ref=f1e56]:
+                  - /url: index.php?uniqcode=EDU&menu_no_top=eim
+              - listitem [ref=f1e58]:
+                - link "Licenses" [ref=f1e59]:
+                  - /url: index.php?uniqcode=LIC&menu_no_top=eim
+          - listitem [ref=f1e61]:
+            - link "Skills" [ref=f1e62]:
+              - /url: "#"
+            - list [ref=f1e64]:
+              - listitem [ref=f1e65]:
+                - link "Skills" [ref=f1e66]:
+                  - /url: index.php?uniqcode=SKI&menu_no_top=eim
+              - listitem [ref=f1e68]:
+                - link "Languages" [ref=f1e69]:
+                  - /url: index.php?uniqcode=LAN&menu_no_top=eim
+          - listitem [ref=f1e71]:
+            - link "Memberships" [ref=f1e72]:
+              - /url: "#"
+            - list [ref=f1e74]:
+              - listitem [ref=f1e75]:
+                - link "Membership Types" [ref=f1e76]:
+                  - /url: index.php?uniqcode=MEM&menu_no_top=eim
+              - listitem [ref=f1e78]:
+                - link "Memberships" [ref=f1e79]:
+                  - /url: index.php?uniqcode=MME&menu_no_top=eim
+          - listitem [ref=f1e81]:
+            - link "Nationality & Race" [ref=f1e82]:
+              - /url: "#"
+            - list [ref=f1e84]:
+              - listitem [ref=f1e85]:
+                - link "Nationality" [ref=f1e86]:
+                  - /url: index.php?uniqcode=NAT&menu_no_top=eim
+              - listitem [ref=f1e88]:
+                - link "Ethnic Races" [ref=f1e89]:
+                  - /url: index.php?uniqcode=ETH&menu_no_top=eim
+          - listitem [ref=f1e91]:
+            - link "Users" [ref=f1e92]:
+              - /url: "#"
+            - list [ref=f1e94]:
+              - listitem [ref=f1e95]:
+                - link "HR Admin Users" [ref=f1e96]:
+                  - /url: index.php?uniqcode=USR&menu_no_top=eim&isAdmin=Yes
+              - listitem [ref=f1e98]:
+                - link "ESS Users" [ref=f1e99]:
+                  - /url: index.php?uniqcode=USR&menu_no_top=eim&isAdmin=No
+              - listitem [ref=f1e101]:
+                - link "Admin User Groups" [ref=f1e102]:
+                  - /url: index.php?uniqcode=USG&menu_no_top=eim
+          - listitem [ref=f1e104]:
+            - link "Email Notifications" [ref=f1e105]:
+              - /url: "#"
+            - list [ref=f1e107]:
+              - listitem [ref=f1e108]:
+                - link "Configuration" [ref=f1e109]:
+                  - /url: index.php?uniqcode=EMX&menu_no_top=eim
+              - listitem [ref=f1e111]:
+                - link "Subscribe" [ref=f1e112]:
+                  - /url: index.php?uniqcode=ENS&menu_no_top=eim
+          - listitem [ref=f1e114]:
+            - link "Project Info" [ref=f1e115]:
+              - /url: "#"
+            - list [ref=f1e117]:
+              - listitem [ref=f1e118]:
+                - link "Customers" [ref=f1e119]:
+                  - /url: index.php?uniqcode=CUS&menu_no_top=eim
+              - listitem [ref=f1e121]:
+                - link "Projects" [ref=f1e122]:
+                  - /url: index.php?uniqcode=PRJ&menu_no_top=eim
+              - listitem [ref=f1e124]:
+                - link "Project Activities" [ref=f1e125]:
+                  - /url: index.php?uniqcode=PAC&menu_no_top=eim
+          - listitem [ref=f1e127]:
+            - link "Data Import/Export" [ref=f1e128]:
+              - /url: "#"
+            - list [ref=f1e130]:
+              - listitem [ref=f1e131]:
+                - link "Define Custom Export" [ref=f1e132]:
+                  - /url: index.php?uniqcode=CEX&menu_no_top=eim
+              - listitem [ref=f1e134]:
+                - link "Export" [ref=f1e135]:
+                  - /url: index.php?uniqcode=CSE&menu_no_top=eim
+              - listitem [ref=f1e137]:
+                - link "Define Custom Import" [ref=f1e138]:
+                  - /url: index.php?uniqcode=CIM&menu_no_top=eim
+              - listitem [ref=f1e140]:
+                - link "Import" [ref=f1e141]:
+                  - /url: index.php?uniqcode=IMP&menu_no_top=eim
+          - listitem [ref=f1e143]:
+            - link "Custom Fields" [ref=f1e144]:
+              - /url: index.php?uniqcode=CTM&menu_no_top=eim
+      - listitem [ref=f1e146] [cursor=pointer]:
+        - link "PIM" [ref=f1e147]:
+          - /url: ./index.php?menu_no_top=hr
+        - list [ref=f1e149]:
+          - listitem [ref=f1e150]:
+            - link "Employee List" [ref=f1e151]:
+              - /url: ./lib/controllers/CentralController.php?reqcode=EMP&VIEW=MAIN&sortField=0&sortOrder0=ASC
+          - listitem [ref=f1e153]:
+            - link "Add Employee" [ref=f1e154]:
+              - /url: ./lib/controllers/CentralController.php?reqcode=EMP&capturemode=addmode
+      - listitem [ref=f1e156] [cursor=pointer]:
+        - link "Leave" [ref=f1e157]:
+          - /url: ./index.php?menu_no_top=leave
+        - list [ref=f1e159]:
+          - listitem [ref=f1e160]:
+            - link "Leave Summary" [ref=f1e161]:
+              - /url: "#"
+            - list [ref=f1e163]:
+              - listitem [ref=f1e164]:
+                - link "Employee Leave Summary" [ref=f1e165]:
+                  - /url: lib/controllers/CentralController.php?leavecode=Leave&action=Leave_Select_Employee_Leave_Summary
+          - listitem [ref=f1e167]:
+            - link "Define Days Off" [ref=f1e168]:
+              - /url: "#"
+            - list [ref=f1e170]:
+              - listitem [ref=f1e171]:
+                - link "Days Off" [ref=f1e172]:
+                  - /url: lib/controllers/CentralController.php?leavecode=Leave&action=Holiday_Weekend_List
+              - listitem [ref=f1e174]:
+                - link "Specific Holidays" [ref=f1e175]:
+                  - /url: lib/controllers/CentralController.php?leavecode=Leave&action=Holiday_Specific_List
+          - listitem [ref=f1e177]:
+            - link "Define Leave Types" [ref=f1e178]:
+              - /url: lib/controllers/CentralController.php?leavecode=Leave&action=Leave_Type_Summary
+          - listitem [ref=f1e180]:
+            - link "Assign Leave" [ref=f1e181]:
+              - /url: lib/controllers/CentralController.php?leavecode=Leave&action=Leave_Apply_Admin_view
+          - listitem [ref=f1e183]:
+            - link "Leave List" [ref=f1e184]:
+              - /url: lib/controllers/CentralController.php?leavecode=Leave&action=Leave_FetchLeaveAdmin&NewQuery=1
+      - listitem [ref=f1e186] [cursor=pointer]:
+        - link "Time" [ref=f1e187]:
+          - /url: ./index.php?menu_no_top=time
+        - list [ref=f1e189]:
+          - listitem [ref=f1e190]:
+            - link "Timesheets" [ref=f1e191]:
+              - /url: lib/controllers/CentralController.php?timecode=Time&action=View_Select_Employee
+            - list [ref=f1e193]:
+              - listitem [ref=f1e194]:
+                - link "Print Timesheets" [ref=f1e195]:
+                  - /url: lib/controllers/CentralController.php?timecode=Time&action=Select_Timesheets_View
+              - listitem [ref=f1e197]:
+                - link "Employee timesheets" [ref=f1e198]:
+                  - /url: lib/controllers/CentralController.php?timecode=Time&action=View_Select_Employee
+          - listitem [ref=f1e200]:
+            - link "Attendance" [ref=f1e201]:
+              - /url: lib/controllers/CentralController.php?timecode=Time&action=Show_Employee_Report
+            - list [ref=f1e203]:
+              - listitem [ref=f1e204]:
+                - link "Employee Reports" [ref=f1e205]:
+                  - /url: lib/controllers/CentralController.php?timecode=Time&action=Show_Employee_Report
+              - listitem [ref=f1e207]:
+                - link "Configuration" [ref=f1e208]:
+                  - /url: lib/controllers/CentralController.php?timecode=Time&action=Show_Attendance_Config
+          - listitem [ref=f1e210]:
+            - link "Employee Reports" [ref=f1e211]:
+              - /url: lib/controllers/CentralController.php?timecode=Time&action=Employee_Report_Define
+          - listitem [ref=f1e213]:
+            - link "Project Reports" [ref=f1e214]:
+              - /url: lib/controllers/CentralController.php?timecode=Time&action=Project_Report_Define
+          - listitem [ref=f1e216]:
+            - link "Work shifts" [ref=f1e217]:
+              - /url: lib/controllers/CentralController.php?timecode=Time&action=View_Work_Shifts
+      - listitem [ref=f1e219] [cursor=pointer]:
+        - link "Benefits" [ref=f1e220]:
+          - /url: ./index.php?menu_no_top=benefits
+        - list [ref=f1e222]:
+          - listitem [ref=f1e223]:
+            - link "Health savings plan" [ref=f1e224]:
+              - /url: lib/controllers/CentralController.php?benefitcode=Benefits&action=Hsp_Summary&year=2026
+            - list [ref=f1e226]:
+              - listitem [ref=f1e227]:
+                - link "Define HSP" [ref=f1e228]:
+                  - /url: lib/controllers/CentralController.php?benefitcode=Benefits&action=Define_Health_Savings_Plans
+              - listitem [ref=f1e230]:
+                - link "Employee HSP Summary" [ref=f1e231]:
+                  - /url: lib/controllers/CentralController.php?benefitcode=Benefits&action=Hsp_Summary&year=2026
+              - listitem [ref=f1e233]:
+                - link "HSP Payments Due" [ref=f1e234]:
+                  - /url: lib/controllers/CentralController.php?benefitcode=Benefits&action=List_Hsp_Due
+              - listitem [ref=f1e236]:
+                - link "HSP Expenditures" [ref=f1e237]:
+                  - /url: lib/controllers/CentralController.php?benefitcode=Benefits&action=Hsp_Expenditures_Select_Year_And_Employee
+              - listitem [ref=f1e239]:
+                - link "HSP Used" [ref=f1e240]:
+                  - /url: lib/controllers/CentralController.php?benefitcode=Benefits&action=Hsp_Used_Select_Year&year=2026
+          - listitem [ref=f1e242]:
+            - link "Payroll schedule" [ref=f1e243]:
+              - /url: lib/controllers/CentralController.php?benefitcode=Benefits&action=Benefits_Schedule_Select_Year
+            - list [ref=f1e245]:
+              - listitem [ref=f1e246]:
+                - link "View Payroll Schedule" [ref=f1e247]:
+                  - /url: lib/controllers/CentralController.php?benefitcode=Benefits&action=Benefits_Schedule_Select_Year
+              - listitem [ref=f1e249]:
+                - link "Add Pay Period" [ref=f1e250]:
+                  - /url: lib/controllers/CentralController.php?benefitcode=Benefits&action=View_Add_Pay_Period
+      - listitem [ref=f1e252] [cursor=pointer]:
+        - link "Recruitment" [ref=f1e253]:
+          - /url: ./index.php?menu_no_top=recruit
+        - list [ref=f1e255]:
+          - listitem [ref=f1e256]:
+            - link "Job Vacancies" [ref=f1e257]:
+              - /url: lib/controllers/CentralController.php?recruitcode=Vacancy&action=List
+          - listitem [ref=f1e259]:
+            - link "Applicants" [ref=f1e260]:
+              - /url: lib/controllers/CentralController.php?recruitcode=Application&action=List
+      - listitem [ref=f1e262] [cursor=pointer]:
+        - link "Performance" [ref=f1e263]:
+          - /url: index.php?uniqcode=KPI&menu_no_top=eim&uri=./symfony/web/index.php/performance/viewReview/mode/new
+        - list [ref=f1e265]:
+          - listitem [ref=f1e266]:
+            - link "KPI List" [ref=f1e267]:
+              - /url: index.php?uniqcode=KPI&menu_no_top=performance&uri=./symfony/web/index.php/performance/listDefineKpi
+          - listitem [ref=f1e269]:
+            - link "Add KPI" [ref=f1e270]:
+              - /url: index.php?uniqcode=KPI&menu_no_top=performance&uri=./symfony/web/index.php/performance/saveKpi
+          - listitem [ref=f1e272]:
+            - link "Copy KPI" [ref=f1e273]:
+              - /url: index.php?uniqcode=KPI&menu_no_top=performance&uri=./symfony/web/index.php/performance/copyKpi
+          - listitem [ref=f1e275]:
+            - link "Add Review" [ref=f1e276]:
+              - /url: index.php?uniqcode=KPI&menu_no_top=performance&uri=./symfony/web/index.php/performance/saveReview
+          - listitem [ref=f1e278]:
+            - link "Reviews" [ref=f1e279]:
+              - /url: index.php?uniqcode=KPI&menu_no_top=performance&uri=./symfony/web/index.php/performance/viewReview/mode/new
+      - listitem [ref=f1e281] [cursor=pointer]:
+        - link "Reports" [ref=f1e282]:
+          - /url: ./index.php?menu_no_top=rep
+        - list [ref=f1e284]:
+          - listitem [ref=f1e285]:
+            - link "View Reports" [ref=f1e286]:
+              - /url: index.php?repcode=EMPVIEW&menu_no_top=rep
+          - listitem [ref=f1e288]:
+            - link "Define Reports" [ref=f1e289]:
+              - /url: index.php?repcode=EMPDEF&menu_no_top=rep
+      - listitem [ref=f1e291] [cursor=pointer]:
+        - link "Bug Tracker" [ref=f1e292]:
+          - /url: ./index.php?menu_no_top=bug
+      - listitem [ref=f1e294] [cursor=pointer]:
+        - link "Help" [ref=f1e295]:
+          - /url: "#"
+        - list [ref=f1e297]:
+          - listitem [ref=f1e298]:
+            - link "Help Contents" [ref=f1e299]:
+              - /url: help.php
+          - listitem [ref=f1e301]:
+            - link "Support" [ref=f1e302]:
+              - /url: http://www.orangehrm.com/subscribe-support.shtml
+          - listitem [ref=f1e304]:
+            - link "Forum" [ref=f1e305]:
+              - /url: http://www.orangehrm.com/forum/
+          - listitem [ref=f1e307]:
+            - link "Blog" [ref=f1e308]:
+              - /url: http://www.orangehrm.com/blog/
+  - iframe [active] [ref=f1e311]:
+    - generic [ref=f2e1]:
+      - iframe [ref=f2e2]
+      - button "Back" [ref=f2e4]
+      - generic:
+        - list [ref=f2e6]:
+          - listitem [ref=f2e7]:
+            - link "Personal" [ref=f2e8] [cursor=pointer]:
+              - /url: "#"
+            - list [ref=f2e10]:
+              - listitem [ref=f2e11]:
+                - link "Personal Details" [ref=f2e12] [cursor=pointer]:
+                  - /url: javascript:displayLayer(1)
+              - listitem [ref=f2e14]:
+                - link "Contact Details" [ref=f2e15] [cursor=pointer]:
+                  - /url: javascript:displayLayer(4)
+              - listitem [ref=f2e17]:
+                - link "Emergency Contact(s)" [ref=f2e18] [cursor=pointer]:
+                  - /url: javascript:displayLayer(5)
+              - listitem [ref=f2e20]:
+                - link "Dependents" [ref=f2e21] [cursor=pointer]:
+                  - /url: javascript:displayLayer(3)
+              - listitem [ref=f2e23]:
+                - link "Immigration" [ref=f2e24] [cursor=pointer]:
+                  - /url: javascript:displayLayer(10)
+              - listitem [ref=f2e26]:
+                - link "Photograph" [ref=f2e27] [cursor=pointer]:
+                  - /url: javascript:displayLayer(21)
+          - listitem [ref=f2e29]:
+            - link "Employment" [ref=f2e30] [cursor=pointer]:
+              - /url: "#"
+            - list [ref=f2e32]:
+              - listitem [ref=f2e33]:
+                - link "Job" [ref=f2e34] [cursor=pointer]:
+                  - /url: javascript:displayLayer(2)
+              - listitem [ref=f2e36]:
+                - link "Salary" [ref=f2e37] [cursor=pointer]:
+                  - /url: javascript:displayLayer(14)
+              - listitem [ref=f2e39]:
+                - link "Tax Exemptions" [ref=f2e40] [cursor=pointer]:
+                  - /url: javascript:displayLayer(18)
+              - listitem [ref=f2e42]:
+                - link "Direct Deposit" [ref=f2e43] [cursor=pointer]:
+                  - /url: javascript:displayLayer(19)
+              - listitem [ref=f2e45]:
+                - link "Report-to" [ref=f2e46] [cursor=pointer]:
+                  - /url: javascript:displayLayer(15)
+          - listitem [ref=f2e48]:
+            - link "Qualifications" [ref=f2e49] [cursor=pointer]:
+              - /url: "#"
+            - list [ref=f2e51]:
+              - listitem [ref=f2e52]:
+                - link "Work experience" [ref=f2e53] [cursor=pointer]:
+                  - /url: javascript:displayLayer(17)
+              - listitem [ref=f2e55]:
+                - link "Education" [ref=f2e56] [cursor=pointer]:
+                  - /url: javascript:displayLayer(9)
+              - listitem [ref=f2e58]:
+                - link "Skills" [ref=f2e59] [cursor=pointer]:
+                  - /url: javascript:displayLayer(16)
+              - listitem [ref=f2e61]:
+                - link "Languages" [ref=f2e62] [cursor=pointer]:
+                  - /url: javascript:displayLayer(11)
+              - listitem [ref=f2e64]:
+                - link "License" [ref=f2e65] [cursor=pointer]:
+                  - /url: javascript:displayLayer(12)
+          - listitem [ref=f2e67]:
+            - link "Other" [ref=f2e68] [cursor=pointer]:
+              - /url: "#"
+            - list [ref=f2e70]:
+              - listitem [ref=f2e71]:
+                - link "Membership" [ref=f2e72] [cursor=pointer]:
+                  - /url: javascript:displayLayer(13)
+              - listitem [ref=f2e74]:
+                - link "Attachments" [ref=f2e75] [cursor=pointer]:
+                  - /url: javascript:displayLayer(6)
+              - listitem [ref=f2e77]:
+                - link "Custom" [ref=f2e78] [cursor=pointer]:
+                  - /url: javascript:displayLayer(20)
+        - generic [ref=f2e80]:
+          - generic [ref=f2e86]:
+            - heading "Personal Details" [level=2] [ref=f2e88]
+            - generic [ref=f2e89]: Code*
+            - textbox "Code*" [ref=f2e90]: "15731"
+            - generic [ref=f2e91]: Last Name
+            - textbox "Last Name" [active] [ref=f2e92]: Khanna
+            - generic [ref=f2e93]: First Name
+            - textbox "First Name" [ref=f2e94]: Kanchan
+            - generic [ref=f2e95]: Middle Name
+            - textbox "Middle Name" [ref=f2e96]
+            - generic [ref=f2e97]: Nick Name
+            - textbox "Nick Name" [ref=f2e98]
+            - generic [ref=f2e99]: "SSN No :"
+            - textbox "SSN No :" [ref=f2e100]
+            - generic [ref=f2e101]: Nationality
+            - combobox "Nationality" [ref=f2e102]:
+              - option "Select Nationality" [selected]
+              - option "INDIANS"
+              - option "QaNationZzz"
+              - option "QaNuhyjf"
+              - option "titlr"
+            - generic [ref=f2e103]: "SIN No :"
+            - textbox "SIN No :" [ref=f2e104]
+            - generic [ref=f2e105]: Date of Birth
+            - textbox "Date of Birth" [ref=f2e106]: YYYY-mm-DD
+            - button [ref=f2e107]
+            - generic [ref=f2e108]: Other ID
+            - textbox "Other ID" [ref=f2e109]
+            - generic [ref=f2e110]: Marital Status
+            - combobox "Marital Status" [ref=f2e111]:
+              - option "--Select--" [selected]
+              - option "Unmarried"
+              - option "Married"
+              - option "Divorced"
+              - option "Others"
+            - generic [ref=f2e112]: Smoker
+            - checkbox "Smoker" [ref=f2e114]
+            - generic [ref=f2e115]: Gender
+            - generic [ref=f2e116]: Male
+            - radio "Male" [checked] [ref=f2e117]
+            - generic [ref=f2e118]: Female
+            - radio "Female" [ref=f2e119]
+            - generic [ref=f2e120]: Driver's License Number
+            - textbox "Driver's License Number" [ref=f2e121]
+            - generic [ref=f2e122]: License Expiry Date
+            - textbox "License Expiry Date" [ref=f2e123]: YYYY-mm-DD
+            - button [ref=f2e124]
+            - generic [ref=f2e125]: Military Service
+            - textbox "Military Service" [ref=f2e126]
+            - generic [ref=f2e127]: Ethnic Race
+            - combobox "Ethnic Race" [ref=f2e128]:
+              - option "Select Ethnic Race" [selected]
+              - option "HINDU"
+            - generic [ref=f2e129]:
+              - button "Save" [ref=f2e130]
+              - button "Reset" [ref=f2e131]
+          - generic [ref=f2e136]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e137]:
+          - generic [ref=f2e143]:
+            - heading "Job" [level=2] [ref=f2e145]
+            - generic [ref=f2e146]:
+              - generic [ref=f2e147]: Job Title
+              - combobox "Job Title" [ref=f2e148]:
+                - option "-- Select Job Title --" [selected]
+                - option "Developer"
+                - option "hr"
+                - option "hr"
+                - option "kjbkjb"
+                - option "QaTitleZzz"
+                - option "ScrubMAster"
+                - option "Software Tester"
+                - option "Testing"
+                - option "tyyy"
+                - option "tyyy"
+                - option "wefsd"
+              - generic [ref=f2e149]: Employment Status
+              - combobox "Employment Status" [ref=f2e150]:
+                - option "-- Select Empl. Status --" [selected]
+                - option "Full Time Internship"
+                - option "Full Time Permanent"
+                - option "Full Time Permanent"
+                - option "jhgfx"
+                - option "Part Time Contract"
+                - option "Part Time Internship"
+                - option "Part Time Permanent"
+                - option "QaVzplee"
+                - option "Terminated"
+                - option "Terminated"
+              - generic [ref=f2e151]: Job Specification
+              - generic [ref=f2e152]: Job Duties
+              - generic [ref=f2e153]: EEO Category
+              - combobox "EEO Category" [ref=f2e154]:
+                - option "-- Select EEO Cat --" [selected]
+                - option "ADMINISTRATIVE SUPPORT"
+                - option "OFFICIALS AND ADMINISTRATORS"
+                - option "PARAPROFESSIONALS"
+                - option "PROFESSIONALS"
+                - option "PROTECTIVE SERVICE WORKERS"
+                - option "SERVICE-MAINTENANCE"
+                - option "SKILLED CRAFT WORKERS"
+                - option "TECHNICIANS"
+              - generic [ref=f2e155]: Joined Date
+              - textbox [ref=f2e156]: YYYY-mm-DD
+              - button [ref=f2e157]
+              - generic [ref=f2e158]: Sub-division
+              - textbox "Sub-division ..." [ref=f2e159]
+              - button "..." [ref=f2e161]
+              - heading "Locations" [level=3] [ref=f2e162]
+              - table:
+                - rowgroup
+            - generic [ref=f2e163]:
+              - combobox "Assign" [ref=f2e164]:
+                - option "-- Select Location --" [selected]
+                - option "Ashutosh"
+                - option "HP"
+                - option "Hyderabad"
+                - option "Hyderabad"
+                - option "Hyderabad"
+                - option "Hyderabad"
+                - option "Hyderabad"
+                - option "Hyderabad"
+                - option "Hyderabad"
+                - option "Hyderabad"
+                - option "Hyderabad"
+                - option "Megha"
+                - option "Naresh"
+                - option "Ramesh"
+                - option "SaiSekhar"
+                - option "SureshIT Institute"
+              - button "Assign" [ref=f2e166]
+            - generic [ref=f2e167]:
+              - button "Save" [ref=f2e168]
+              - button "Reset" [ref=f2e169]
+              - link "Show employee contracts" [ref=f2e170] [cursor=pointer]:
+                - /url: javascript:toggleEmployeeContracts();
+              - link "Show employee history" [ref=f2e171] [cursor=pointer]:
+                - /url: javascript:toggleEmployeeJobHistory();
+          - generic [ref=f2e176]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e177]:
+          - generic [ref=f2e183]:
+            - heading "Dependents" [level=2] [ref=f2e185]
+            - generic [ref=f2e186]:
+              - generic [ref=f2e187]:
+                - heading "Dependents" [level=3] [ref=f2e188]
+                - generic [ref=f2e189]:
+                  - generic [ref=f2e190]: Name *
+                  - textbox "Name *" [ref=f2e191]
+                  - generic [ref=f2e192]: Relationship
+                  - textbox "Relationship" [ref=f2e193]
+                  - generic [ref=f2e194]:
+                    - button "Save" [ref=f2e195]
+                    - button "Reset" [ref=f2e196]
+              - generic [ref=f2e197]:
+                - heading "Children" [level=3] [ref=f2e198]
+                - generic [ref=f2e199]:
+                  - generic [ref=f2e200]: Name
+                  - textbox "Name" [ref=f2e201]
+                  - generic [ref=f2e202]: Date of Birth
+                  - textbox "Date of Birth" [ref=f2e203]: YYYY-mm-DD
+                  - button [ref=f2e204]
+                  - generic [ref=f2e205]:
+                    - button "Save" [ref=f2e206]
+                    - button "Reset" [ref=f2e207]
+          - generic [ref=f2e212]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e213]:
+          - generic [ref=f2e219]:
+            - heading "Contact Details" [level=2] [ref=f2e221]
+            - table [ref=f2e222]:
+              - rowgroup [ref=f2e223]:
+                - row [ref=f2e224]:
+                  - cell "Country" [ref=f2e225]
+                  - cell "Select Country" [ref=f2e226]:
+                    - combobox [ref=f2e227]:
+                      - option "Select Country" [selected]
+                      - option "Afghanistan"
+                      - option "Albania"
+                      - option "Algeria"
+                      - option "American Samoa"
+                      - option "Andorra"
+                      - option "Angola"
+                      - option "Anguilla"
+                      - option "Antarctica"
+                      - option "Antigua and Barbuda"
+                      - option "Argentina"
+                      - option "Armenia"
+                      - option "Aruba"
+                      - option "Australia"
+                      - option "Austria"
+                      - option "Azerbaijan"
+                      - option "Bahamas"
+                      - option "Bahrain"
+                      - option "Bangladesh"
+                      - option "Barbados"
+                      - option "Belarus"
+                      - option "Belgium"
+                      - option "Belize"
+                      - option "Benin"
+                      - option "Bermuda"
+                      - option "Bhutan"
+                      - option "Bolivia"
+                      - option "Bosnia and Herzegovina"
+                      - option "Botswana"
+                      - option "Bouvet Island"
+                      - option "Brazil"
+                      - option "British Indian Ocean Territory"
+                      - option "Brunei Darussalam"
+                      - option "Bulgaria"
+                      - option "Burkina Faso"
+                      - option "Burundi"
+                      - option "Cambodia"
+                      - option "Cameroon"
+                      - option "Canada"
+                      - option "Cape Verde"
+                      - option "Cayman Islands"
+                      - option "Central African Republic"
+                      - option "Chad"
+                      - option "Chile"
+                      - option "China"
+                      - option "Christmas Island"
+                      - option "Cocos (Keeling) Islands"
+                      - option "Colombia"
+                      - option "Comoros"
+                      - option "Congo"
+                      - option "Congo, the Democratic Republic of the"
+                      - option "Cook Islands"
+                      - option "Costa Rica"
+                      - option "Cote D'Ivoire"
+                      - option "Croatia"
+                      - option "Cuba"
+                      - option "Cyprus"
+                      - option "Czech Republic"
+                      - option "Denmark"
+                      - option "Djibouti"
+                      - option "Dominica"
+                      - option "Dominican Republic"
+                      - option "Ecuador"
+                      - option "Egypt"
+                      - option "El Salvador"
+                      - option "Equatorial Guinea"
+                      - option "Eritrea"
+                      - option "Estonia"
+                      - option "Ethiopia"
+                      - option "Falkland Islands (Malvinas)"
+                      - option "Faroe Islands"
+                      - option "Fiji"
+                      - option "Finland"
+                      - option "France"
+                      - option "French Guiana"
+                      - option "French Polynesia"
+                      - option "French Southern Territories"
+                      - option "Gabon"
+                      - option "Gambia"
+                      - option "Georgia"
+                      - option "Germany"
+                      - option "Ghana"
+                      - option "Gibraltar"
+                      - option "Greece"
+                      - option "Greenland"
+                      - option "Grenada"
+                      - option "Guadeloupe"
+                      - option "Guam"
+                      - option "Guatemala"
+                      - option "Guinea"
+                      - option "Guinea-Bissau"
+                      - option "Guyana"
+                      - option "Haiti"
+                      - option "Heard Island and Mcdonald Islands"
+                      - option "Holy See (Vatican City State)"
+                      - option "Honduras"
+                      - option "Hong Kong"
+                      - option "Hungary"
+                      - option "Iceland"
+                      - option "India"
+                      - option "Indonesia"
+                      - option "Iran, Islamic Republic of"
+                      - option "Iraq"
+                      - option "Ireland"
+                      - option "Israel"
+                      - option "Italy"
+                      - option "Jamaica"
+                      - option "Japan"
+                      - option "Jordan"
+                      - option "Kazakhstan"
+                      - option "Kenya"
+                      - option "Kiribati"
+                      - option "Korea, Democratic People's Republic of"
+                      - option "Korea, Republic of"
+                      - option "Kuwait"
+                      - option "Kyrgyzstan"
+                      - option "Lao People's Democratic Republic"
+                      - option "Latvia"
+                      - option "Lebanon"
+                      - option "Lesotho"
+                      - option "Liberia"
+                      - option "Libyan Arab Jamahiriya"
+                      - option "Liechtenstein"
+                      - option "Lithuania"
+                      - option "Luxembourg"
+                      - option "Macao"
+                      - option "Macedonia, the Former Yugoslav Republic of"
+                      - option "Madagascar"
+                      - option "Malawi"
+                      - option "Malaysia"
+                      - option "Maldives"
+                      - option "Mali"
+                      - option "Malta"
+                      - option "Marshall Islands"
+                      - option "Martinique"
+                      - option "Mauritania"
+                      - option "Mauritius"
+                      - option "Mayotte"
+                      - option "Mexico"
+                      - option "Micronesia, Federated States of"
+                      - option "Moldova, Republic of"
+                      - option "Monaco"
+                      - option "Mongolia"
+                      - option "Montserrat"
+                      - option "Morocco"
+                      - option "Mozambique"
+                      - option "Myanmar"
+                      - option "Namibia"
+                      - option "Nauru"
+                      - option "Nepal"
+                      - option "Netherlands"
+                      - option "Netherlands Antilles"
+                      - option "New Caledonia"
+                      - option "New Zealand"
+                      - option "Nicaragua"
+                      - option "Niger"
+                      - option "Nigeria"
+                      - option "Niue"
+                      - option "Norfolk Island"
+                      - option "Northern Mariana Islands"
+                      - option "Norway"
+                      - option "Oman"
+                      - option "Pakistan"
+                      - option "Palau"
+                      - option "Palestinian Territory, Occupied"
+                      - option "Panama"
+                      - option "Papua New Guinea"
+                      - option "Paraguay"
+                      - option "Peru"
+                      - option "Philippines"
+                      - option "Pitcairn"
+                      - option "Poland"
+                      - option "Portugal"
+                      - option "Puerto Rico"
+                      - option "Qatar"
+                      - option "Reunion"
+                      - option "Romania"
+                      - option "Russian Federation"
+                      - option "Rwanda"
+                      - option "Saint Helena"
+                      - option "Saint Kitts and Nevis"
+                      - option "Saint Lucia"
+                      - option "Saint Pierre and Miquelon"
+                      - option "Saint Vincent and the Grenadines"
+                      - option "Samoa"
+                      - option "San Marino"
+                      - option "Sao Tome and Principe"
+                      - option "Saudi Arabia"
+                      - option "Senegal"
+                      - option "Serbia and Montenegro"
+                      - option "Seychelles"
+                      - option "Sierra Leone"
+                      - option "Singapore"
+                      - option "Slovakia"
+                      - option "Slovenia"
+                      - option "Solomon Islands"
+                      - option "Somalia"
+                      - option "South Africa"
+                      - option "South Georgia and the South Sandwich Islands"
+                      - option "Spain"
+                      - option "Sri Lanka"
+                      - option "Sudan"
+                      - option "Suriname"
+                      - option "Svalbard and Jan Mayen"
+                      - option "Swaziland"
+                      - option "Sweden"
+                      - option "Switzerland"
+                      - option "Syrian Arab Republic"
+                      - option "Taiwan"
+                      - option "Tajikistan"
+                      - option "Tanzania, United Republic of"
+                      - option "Thailand"
+                      - option "Timor-Leste"
+                      - option "Togo"
+                      - option "Tokelau"
+                      - option "Tonga"
+                      - option "Trinidad and Tobago"
+                      - option "Tunisia"
+                      - option "Turkey"
+                      - option "Turkmenistan"
+                      - option "Turks and Caicos Islands"
+                      - option "Tuvalu"
+                      - option "Uganda"
+                      - option "Ukraine"
+                      - option "United Arab Emirates"
+                      - option "United Kingdom"
+                      - option "United States"
+                      - option "United States Minor Outlying Islands"
+                      - option "Uruguay"
+                      - option "Uzbekistan"
+                      - option "Vanuatu"
+                      - option "Venezuela"
+                      - option "Viet Nam"
+                      - option "Virgin Islands, British"
+                      - option "Virgin Islands, U.s."
+                      - option "Wallis and Futuna"
+                      - option "Western Sahara"
+                      - option "Yemen"
+                      - option "Zambia"
+                      - option "Zimbabwe"
+                - row [ref=f2e228]:
+                  - cell "Street 1" [ref=f2e229]
+                  - cell [ref=f2e230]:
+                    - textbox [ref=f2e231]
+                  - cell [ref=f2e232]
+                  - cell "Street 2" [ref=f2e233]
+                  - cell [ref=f2e234]:
+                    - textbox [ref=f2e235]
+                - row [ref=f2e236]:
+                  - cell "City/Town" [ref=f2e237]
+                  - cell [ref=f2e238]:
+                    - textbox [ref=f2e239]
+                  - cell [ref=f2e240]
+                  - cell "State / Province" [ref=f2e241]
+                  - cell [ref=f2e242]:
+                    - textbox [ref=f2e244]
+                - row [ref=f2e245]:
+                  - cell "ZIP Code" [ref=f2e246]
+                  - cell [ref=f2e247]:
+                    - textbox [ref=f2e248]
+                - row [ref=f2e249]:
+                  - cell "Home Telephone" [ref=f2e250]
+                  - cell [ref=f2e251]:
+                    - textbox [ref=f2e252]
+                  - cell [ref=f2e253]
+                  - cell "Mobile" [ref=f2e254]
+                  - cell [ref=f2e255]:
+                    - textbox [ref=f2e256]
+                - row [ref=f2e257]:
+                  - cell "Work Telephone" [ref=f2e258]
+                  - cell [ref=f2e259]:
+                    - textbox [ref=f2e260]
+                  - cell [ref=f2e261]
+                  - cell [ref=f2e262]
+                  - cell [ref=f2e263]
+                - row [ref=f2e264]:
+                  - cell "Work Email" [ref=f2e265]
+                  - cell [ref=f2e266]:
+                    - textbox [ref=f2e267]
+                  - cell [ref=f2e268]
+                  - cell "Other Email" [ref=f2e269]
+                  - cell [ref=f2e270]:
+                    - textbox [ref=f2e271]
+            - generic [ref=f2e272]:
+              - button "Save" [ref=f2e273]
+              - button "Reset" [ref=f2e274]
+          - generic [ref=f2e279]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e280]:
+          - generic [ref=f2e286]:
+            - heading "Emergency Contact(s)" [level=2] [ref=f2e288]
+            - generic [ref=f2e290]:
+              - table [ref=f2e291]:
+                - rowgroup [ref=f2e292]:
+                  - row [ref=f2e293]:
+                    - cell "Name *" [ref=f2e294]
+                    - cell [ref=f2e295]:
+                      - textbox [ref=f2e296]
+                    - cell [ref=f2e297]
+                    - cell "Relationship *" [ref=f2e298]
+                    - cell [ref=f2e299]:
+                      - textbox [ref=f2e300]
+                  - row [ref=f2e301]:
+                    - cell "Home Telephone" [ref=f2e302]
+                    - cell [ref=f2e303]:
+                      - textbox [ref=f2e304]
+                    - cell [ref=f2e305]
+                    - cell "Mobile" [ref=f2e306]
+                    - cell [ref=f2e307]:
+                      - textbox [ref=f2e308]
+                  - row [ref=f2e309]:
+                    - cell "Work Telephone" [ref=f2e310]
+                    - cell [ref=f2e311]:
+                      - textbox [ref=f2e312]
+              - generic [ref=f2e313]:
+                - button "Save" [ref=f2e314]
+                - button "Reset" [ref=f2e315]
+          - generic [ref=f2e320]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e321]:
+          - generic [ref=f2e327]:
+            - heading "Attachments" [level=2] [ref=f2e329]
+            - generic [ref=f2e331]:
+              - table [ref=f2e332]:
+                - rowgroup [ref=f2e333]:
+                  - row [ref=f2e334]:
+                    - cell "Path" [ref=f2e335]
+                    - cell [ref=f2e336]:
+                      - button "Choose File" [ref=f2e337]
+                      - text: "[1M Max, any larger attachments will be ignored]"
+                  - row [ref=f2e338]:
+                    - cell "Description" [ref=f2e339]
+                    - cell [ref=f2e340]:
+                      - textbox [ref=f2e341]
+                  - row [ref=f2e342]:
+                    - cell [ref=f2e343]
+                    - cell [ref=f2e344]
+              - generic [ref=f2e345]:
+                - button "Save" [ref=f2e346]
+                - button "Reset" [ref=f2e347]
+          - generic [ref=f2e352]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e353]:
+          - generic [ref=f2e359]:
+            - heading "Education" [level=2] [ref=f2e361]
+            - generic [ref=f2e363]:
+              - table [ref=f2e364]:
+                - rowgroup [ref=f2e365]:
+                  - row [ref=f2e366]:
+                    - cell "Education" [ref=f2e367]
+                    - cell "--Select Education--" [ref=f2e368]:
+                      - combobox [ref=f2e369]:
+                        - option "--Select Education--" [selected]
+                        - option "MCA, KSR"
+                        - option "ok, ok not"
+                        - option "selenium java, sureshit"
+                        - option "tes, sure"
+                  - row [ref=f2e370]:
+                    - cell "Major/Specialization" [ref=f2e371]
+                    - cell [ref=f2e372]:
+                      - textbox [ref=f2e373]
+                  - row [ref=f2e374]:
+                    - cell "Year" [ref=f2e375]
+                    - cell [ref=f2e376]:
+                      - textbox [ref=f2e377]
+                  - row [ref=f2e378]:
+                    - cell "GPA/Score" [ref=f2e379]
+                    - cell [ref=f2e380]:
+                      - textbox [ref=f2e381]
+                  - row [ref=f2e382]:
+                    - cell "Start Date" [ref=f2e383]
+                    - cell [ref=f2e384]:
+                      - textbox [ref=f2e385]: YYYY-mm-DD
+                      - button [ref=f2e386]
+                  - row [ref=f2e387]:
+                    - cell "End Date" [ref=f2e388]
+                    - cell [ref=f2e389]:
+                      - textbox [ref=f2e390]: YYYY-mm-DD
+                      - button [ref=f2e391]
+                  - row [ref=f2e392]:
+                    - cell [ref=f2e393]
+                    - cell [ref=f2e394]
+              - generic [ref=f2e395]:
+                - button "Save" [ref=f2e396]
+                - button "Reset" [ref=f2e397]
+          - generic [ref=f2e402]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e403]:
+          - generic [ref=f2e409]:
+            - heading "Immigration" [level=2] [ref=f2e411]
+            - generic [ref=f2e413]:
+              - table [ref=f2e414]:
+                - rowgroup [ref=f2e415]:
+                  - row [ref=f2e416]:
+                    - cell "Passport" [ref=f2e417]:
+                      - text: Passport
+                      - radio [checked] [ref=f2e418]
+                    - cell "Visa" [ref=f2e419]:
+                      - text: Visa
+                      - radio [ref=f2e420]
+                    - cell [ref=f2e421]
+                    - cell "Citizenship" [ref=f2e422]
+                    - cell "-- Select Country --" [ref=f2e423]:
+                      - combobox [ref=f2e424]:
+                        - option "-- Select Country --" [selected]
+                        - option "Afghanistan"
+                        - option "Albania"
+                        - option "Algeria"
+                        - option "American Samoa"
+                        - option "Andorra"
+                        - option "Angola"
+                        - option "Anguilla"
+                        - option "Antarctica"
+                        - option "Antigua and Barbuda"
+                        - option "Argentina"
+                        - option "Armenia"
+                        - option "Aruba"
+                        - option "Australia"
+                        - option "Austria"
+                        - option "Azerbaijan"
+                        - option "Bahamas"
+                        - option "Bahrain"
+                        - option "Bangladesh"
+                        - option "Barbados"
+                        - option "Belarus"
+                        - option "Belgium"
+                        - option "Belize"
+                        - option "Benin"
+                        - option "Bermuda"
+                        - option "Bhutan"
+                        - option "Bolivia"
+                        - option "Bosnia and Herzegovina"
+                        - option "Botswana"
+                        - option "Bouvet Island"
+                        - option "Brazil"
+                        - option "British Indian Ocean Territory"
+                        - option "Brunei Darussalam"
+                        - option "Bulgaria"
+                        - option "Burkina Faso"
+                        - option "Burundi"
+                        - option "Cambodia"
+                        - option "Cameroon"
+                        - option "Canada"
+                        - option "Cape Verde"
+                        - option "Cayman Islands"
+                        - option "Central African Republic"
+                        - option "Chad"
+                        - option "Chile"
+                        - option "China"
+                        - option "Christmas Island"
+                        - option "Cocos (Keeling) Islands"
+                        - option "Colombia"
+                        - option "Comoros"
+                        - option "Congo"
+                        - option "Congo, the Democratic Republic of the"
+                        - option "Cook Islands"
+                        - option "Costa Rica"
+                        - option "Cote D'Ivoire"
+                        - option "Croatia"
+                        - option "Cuba"
+                        - option "Cyprus"
+                        - option "Czech Republic"
+                        - option "Denmark"
+                        - option "Djibouti"
+                        - option "Dominica"
+                        - option "Dominican Republic"
+                        - option "Ecuador"
+                        - option "Egypt"
+                        - option "El Salvador"
+                        - option "Equatorial Guinea"
+                        - option "Eritrea"
+                        - option "Estonia"
+                        - option "Ethiopia"
+                        - option "Falkland Islands (Malvinas)"
+                        - option "Faroe Islands"
+                        - option "Fiji"
+                        - option "Finland"
+                        - option "France"
+                        - option "French Guiana"
+                        - option "French Polynesia"
+                        - option "French Southern Territories"
+                        - option "Gabon"
+                        - option "Gambia"
+                        - option "Georgia"
+                        - option "Germany"
+                        - option "Ghana"
+                        - option "Gibraltar"
+                        - option "Greece"
+                        - option "Greenland"
+                        - option "Grenada"
+                        - option "Guadeloupe"
+                        - option "Guam"
+                        - option "Guatemala"
+                        - option "Guinea"
+                        - option "Guinea-Bissau"
+                        - option "Guyana"
+                        - option "Haiti"
+                        - option "Heard Island and Mcdonald Islands"
+                        - option "Holy See (Vatican City State)"
+                        - option "Honduras"
+                        - option "Hong Kong"
+                        - option "Hungary"
+                        - option "Iceland"
+                        - option "India"
+                        - option "Indonesia"
+                        - option "Iran, Islamic Republic of"
+                        - option "Iraq"
+                        - option "Ireland"
+                        - option "Israel"
+                        - option "Italy"
+                        - option "Jamaica"
+                        - option "Japan"
+                        - option "Jordan"
+                        - option "Kazakhstan"
+                        - option "Kenya"
+                        - option "Kiribati"
+                        - option "Korea, Democratic People's Republic of"
+                        - option "Korea, Republic of"
+                        - option "Kuwait"
+                        - option "Kyrgyzstan"
+                        - option "Lao People's Democratic Republic"
+                        - option "Latvia"
+                        - option "Lebanon"
+                        - option "Lesotho"
+                        - option "Liberia"
+                        - option "Libyan Arab Jamahiriya"
+                        - option "Liechtenstein"
+                        - option "Lithuania"
+                        - option "Luxembourg"
+                        - option "Macao"
+                        - option "Macedonia, the Former Yugoslav Republic of"
+                        - option "Madagascar"
+                        - option "Malawi"
+                        - option "Malaysia"
+                        - option "Maldives"
+                        - option "Mali"
+                        - option "Malta"
+                        - option "Marshall Islands"
+                        - option "Martinique"
+                        - option "Mauritania"
+                        - option "Mauritius"
+                        - option "Mayotte"
+                        - option "Mexico"
+                        - option "Micronesia, Federated States of"
+                        - option "Moldova, Republic of"
+                        - option "Monaco"
+                        - option "Mongolia"
+                        - option "Montserrat"
+                        - option "Morocco"
+                        - option "Mozambique"
+                        - option "Myanmar"
+                        - option "Namibia"
+                        - option "Nauru"
+                        - option "Nepal"
+                        - option "Netherlands"
+                        - option "Netherlands Antilles"
+                        - option "New Caledonia"
+                        - option "New Zealand"
+                        - option "Nicaragua"
+                        - option "Niger"
+                        - option "Nigeria"
+                        - option "Niue"
+                        - option "Norfolk Island"
+                        - option "Northern Mariana Islands"
+                        - option "Norway"
+                        - option "Oman"
+                        - option "Pakistan"
+                        - option "Palau"
+                        - option "Palestinian Territory, Occupied"
+                        - option "Panama"
+                        - option "Papua New Guinea"
+                        - option "Paraguay"
+                        - option "Peru"
+                        - option "Philippines"
+                        - option "Pitcairn"
+                        - option "Poland"
+                        - option "Portugal"
+                        - option "Puerto Rico"
+                        - option "Qatar"
+                        - option "Reunion"
+                        - option "Romania"
+                        - option "Russian Federation"
+                        - option "Rwanda"
+                        - option "Saint Helena"
+                        - option "Saint Kitts and Nevis"
+                        - option "Saint Lucia"
+                        - option "Saint Pierre and Miquelon"
+                        - option "Saint Vincent and the Grenadines"
+                        - option "Samoa"
+                        - option "San Marino"
+                        - option "Sao Tome and Principe"
+                        - option "Saudi Arabia"
+                        - option "Senegal"
+                        - option "Serbia and Montenegro"
+                        - option "Seychelles"
+                        - option "Sierra Leone"
+                        - option "Singapore"
+                        - option "Slovakia"
+                        - option "Slovenia"
+                        - option "Solomon Islands"
+                        - option "Somalia"
+                        - option "South Africa"
+                        - option "South Georgia and the South Sandwich Islands"
+                        - option "Spain"
+                        - option "Sri Lanka"
+                        - option "Sudan"
+                        - option "Suriname"
+                        - option "Svalbard and Jan Mayen"
+                        - option "Swaziland"
+                        - option "Sweden"
+                        - option "Switzerland"
+                        - option "Syrian Arab Republic"
+                        - option "Taiwan"
+                        - option "Tajikistan"
+                        - option "Tanzania, United Republic of"
+                        - option "Thailand"
+                        - option "Timor-Leste"
+                        - option "Togo"
+                        - option "Tokelau"
+                        - option "Tonga"
+                        - option "Trinidad and Tobago"
+                        - option "Tunisia"
+                        - option "Turkey"
+                        - option "Turkmenistan"
+                        - option "Turks and Caicos Islands"
+                        - option "Tuvalu"
+                        - option "Uganda"
+                        - option "Ukraine"
+                        - option "United Arab Emirates"
+                        - option "United Kingdom"
+                        - option "United States"
+                        - option "United States Minor Outlying Islands"
+                        - option "Uruguay"
+                        - option "Uzbekistan"
+                        - option "Vanuatu"
+                        - option "Venezuela"
+                        - option "Viet Nam"
+                        - option "Virgin Islands, British"
+                        - option "Virgin Islands, U.s."
+                        - option "Wallis and Futuna"
+                        - option "Western Sahara"
+                        - option "Yemen"
+                        - option "Zambia"
+                        - option "Zimbabwe"
+                  - row [ref=f2e425]:
+                    - cell "Passport/Visa No" [ref=f2e426]
+                    - cell [ref=f2e427]:
+                      - textbox [ref=f2e428]
+                    - cell [ref=f2e429]
+                    - cell "Issued Date" [ref=f2e430]
+                    - cell [ref=f2e431]:
+                      - textbox [ref=f2e432]: YYYY-mm-DD
+                      - button [ref=f2e433]
+                  - row [ref=f2e434]:
+                    - cell "I9 Status" [ref=f2e435]
+                    - cell [ref=f2e436]:
+                      - textbox [ref=f2e437]
+                    - cell [ref=f2e438]
+                    - cell "Date of Expiry" [ref=f2e439]
+                    - cell [ref=f2e440]:
+                      - textbox [ref=f2e441]: YYYY-mm-DD
+                      - button [ref=f2e442]
+                  - row [ref=f2e443]:
+                    - cell "I9 Review Date" [ref=f2e444]
+                    - cell [ref=f2e445]:
+                      - textbox [ref=f2e446]: YYYY-mm-DD
+                      - button [ref=f2e447]
+                    - cell [ref=f2e448]
+                    - cell "Comments" [ref=f2e449]
+                    - cell [ref=f2e450]:
+                      - textbox [ref=f2e451]
+              - generic [ref=f2e452]:
+                - button "Save" [ref=f2e453]
+                - button "Reset" [ref=f2e454]
+          - generic [ref=f2e459]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e460]:
+          - generic [ref=f2e466]:
+            - heading "Languages" [level=2] [ref=f2e468]
+            - generic [ref=f2e470]:
+              - table [ref=f2e471]:
+                - rowgroup [ref=f2e472]:
+                  - row [ref=f2e473]:
+                    - cell "Language" [ref=f2e474]
+                    - cell "--Select Language--" [ref=f2e475]:
+                      - combobox [ref=f2e476]:
+                        - option "--Select Language--" [selected]
+                        - option "advaced java"
+                        - option "Ai Mi"
+                        - option "Aiiiii Miiii"
+                        - option "american english"
+                        - option "asdfgds"
+                        - option "asdfghj"
+                        - option "aut tester"
+                        - option "autom tester"
+                        - option "automa tester"
+                        - option "automation"
+                        - option "automation tester"
+                        - option "automation testing"
+                        - option "bcnvm"
+                        - option "Bhojpuri"
+                        - option "brazilian"
+                        - option "chenna"
+                        - option "Core Java"
+                        - option "Corejavaselenium"
+                        - option "dfghj"
+                        - option "DotNet"
+                        - option "GNAL"
+                        - option "god"
+                        - option "good"
+                        - option "holiday"
+                        - option "holidaYS"
+                        - option "Japanese"
+                        - option "JAVAONE"
+                        - option "JavaSBR"
+                        - option "kjhjkhjk"
+                        - option "nantelugu"
+                        - option "ncbn"
+                        - option "Odia"
+                        - option "Odia-language"
+                        - option "playwrightjavascript"
+                        - option "pradeep"
+                        - option "Python"
+                        - option "pythonnn"
+                        - option "pyton"
+                        - option "pytonnn"
+                        - option "pytonnnnn"
+                        - option "Selenium"
+                        - option "Selenium Tool"
+                        - option "seleniumtools"
+                        - option "sss"
+                        - option "sureshit"
+                        - option "telugu"
+                        - option "telugunandasai"
+                        - option "telugunandasaii"
+                        - option "Teluguu"
+                        - option "thth"
+                        - option "ts"
+                        - option "TTEELL"
+                        - option "txtLanguageInfoDesc"
+                        - option "TypeScript"
+                        - option "yer"
+                  - row [ref=f2e477]:
+                    - cell "Fluency" [ref=f2e478]
+                    - cell "---Select Fluency---" [ref=f2e479]:
+                      - combobox [ref=f2e480]:
+                        - option "---Select Fluency---" [selected]
+                        - option "Writing"
+                        - option "Speaking"
+                        - option "Reading"
+                  - row [ref=f2e481]:
+                    - cell "Competency" [ref=f2e482]
+                    - cell "----Select Rating----" [ref=f2e483]:
+                      - combobox [ref=f2e484]:
+                        - option "----Select Rating----" [selected]
+                        - option "Poor"
+                        - option "Basic"
+                        - option "Good"
+                        - option "Mother Tongue"
+                  - row [ref=f2e485]:
+                    - cell [ref=f2e486]
+                    - cell [ref=f2e487]
+              - generic [ref=f2e488]:
+                - button "Save" [ref=f2e489]
+                - button "Reset" [ref=f2e490]
+          - generic [ref=f2e495]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e496]:
+          - generic [ref=f2e502]:
+            - heading "License" [level=2] [ref=f2e504]
+            - generic [ref=f2e506]:
+              - table [ref=f2e507]:
+                - rowgroup [ref=f2e508]:
+                  - row [ref=f2e509]:
+                    - cell "License Type" [ref=f2e510]
+                    - cell "--Select License Type--" [ref=f2e511]:
+                      - combobox [ref=f2e512]:
+                        - option "--Select License Type--" [selected]
+                        - option "Masters in Computer Applications"
+                  - row [ref=f2e513]:
+                    - cell "Start Date" [ref=f2e514]
+                    - cell [ref=f2e515]:
+                      - textbox [ref=f2e516]: YYYY-mm-DD
+                      - button [ref=f2e517]
+                  - row [ref=f2e518]:
+                    - cell "End Date" [ref=f2e519]
+                    - cell [ref=f2e520]:
+                      - textbox [ref=f2e521]: YYYY-mm-DD
+                      - button [ref=f2e522]
+                  - row [ref=f2e523]:
+                    - cell [ref=f2e524]
+                    - cell [ref=f2e525]
+              - generic [ref=f2e526]:
+                - button "Save" [ref=f2e527]
+                - button "Reset" [ref=f2e528]
+          - generic [ref=f2e533]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e534]:
+          - generic [ref=f2e540]:
+            - heading "Membership" [level=2] [ref=f2e542]
+            - generic [ref=f2e544]:
+              - table [ref=f2e545]:
+                - rowgroup [ref=f2e546]:
+                  - row [ref=f2e547]:
+                    - cell "Membership Type" [ref=f2e548]
+                    - cell "-- Select Membership Type --" [ref=f2e549]:
+                      - combobox [ref=f2e550]:
+                        - option "-- Select Membership Type --" [selected]
+                        - option "Full Time"
+                        - option "Full Time in Online"
+                        - option "Full type"
+                        - option "Part Time"
+                  - row [ref=f2e551]:
+                    - cell "Membership" [ref=f2e552]
+                    - cell "-- Select Membership --" [ref=f2e553]:
+                      - combobox [ref=f2e554]:
+                        - option "-- Select Membership --" [selected]
+                  - row [ref=f2e555]:
+                    - cell "Subscription Ownership" [ref=f2e556]
+                    - cell "-- Select Ownership --" [ref=f2e557]:
+                      - combobox [ref=f2e558]:
+                        - option "-- Select Ownership --" [selected]
+                        - option "Company"
+                        - option "Individual"
+                  - row [ref=f2e559]:
+                    - cell "Subscription Amount" [ref=f2e560]
+                    - cell [ref=f2e561]:
+                      - textbox [ref=f2e562]
+                  - row [ref=f2e563]:
+                    - cell "Subscription Commence Date" [ref=f2e564]
+                    - cell [ref=f2e565]:
+                      - textbox [ref=f2e566]: YYYY-mm-DD
+                      - button [ref=f2e567]
+                  - row [ref=f2e568]:
+                    - cell "Subscription Renewal Date" [ref=f2e569]
+                    - cell [ref=f2e570]:
+                      - textbox [ref=f2e571]: YYYY-mm-DD
+                      - button [ref=f2e572]
+                  - row [ref=f2e573]:
+                    - cell [ref=f2e574]
+                    - cell [ref=f2e575]
+              - generic [ref=f2e576]:
+                - button "Save" [ref=f2e577]
+                - button "Reset" [ref=f2e578]
+          - generic [ref=f2e583]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e584]:
+          - generic [ref=f2e590]:
+            - heading "Salary" [level=2] [ref=f2e592]
+            - generic [ref=f2e594]:
+              - table [ref=f2e595]:
+                - rowgroup [ref=f2e596]:
+                  - row [ref=f2e597]:
+                    - cell "Pay Grade" [ref=f2e598]
+                    - cell [ref=f2e599]:
+                      - strong [ref=f2e600]:
+                        - combobox [ref=f2e601]:
+                          - option "-- Select Pay Grade --" [selected]
+                          - option "90hy6ui9kolp;['"
+                          - option "Janani"
+                          - option "Megha"
+                          - option "Sannu"
+                          - option "Vignesh"
+                  - row [ref=f2e602]:
+                    - cell "Currency" [ref=f2e603]
+                    - cell "-- Select Currency --" [ref=f2e604]:
+                      - combobox [ref=f2e605]:
+                        - option "-- Select Currency --" [selected]
+                  - row [ref=f2e606]:
+                    - cell "Minimum Salary" [ref=f2e607]
+                    - cell [ref=f2e608]:
+                      - strong [ref=f2e610]: "-N/A-"
+                  - row [ref=f2e611]:
+                    - cell "Maximum Salary" [ref=f2e612]
+                    - cell [ref=f2e613]:
+                      - strong [ref=f2e615]: "-N/A-"
+                  - row [ref=f2e616]:
+                    - cell "Basic Salary" [ref=f2e617]
+                    - cell [ref=f2e618]:
+                      - textbox [ref=f2e619]
+                  - row [ref=f2e620]:
+                    - cell "Pay Frequency" [ref=f2e621]
+                    - cell "-- Select --" [ref=f2e622]:
+                      - combobox [ref=f2e623]:
+                        - option "-- Select --" [selected]
+                        - option "Weekly"
+                        - option "Bi Weekly"
+                        - option "Semi Monthly"
+                        - option "Monthly"
+                        - option "Monthly on first pay of month."
+                        - option "Hourly"
+              - generic [ref=f2e624]:
+                - button "Save" [ref=f2e625]
+                - button "Reset" [ref=f2e626]
+          - generic [ref=f2e631]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e632]:
+          - generic [ref=f2e638]:
+            - heading "Report-to" [level=2] [ref=f2e640]
+            - generic [ref=f2e642]:
+              - table [ref=f2e643]:
+                - rowgroup [ref=f2e644]:
+                  - row [ref=f2e645]:
+                    - cell "Supervisor / Subordinate" [ref=f2e646]
+                    - cell "Select" [ref=f2e647]:
+                      - combobox [ref=f2e648]:
+                        - option "Select" [selected]
+                        - option "Supervisor"
+                        - option "Subordinate"
+                  - row [ref=f2e649]:
+                    - cell "Employee Name" [ref=f2e650]
+                    - cell [ref=f2e651]:
+                      - textbox [ref=f2e652]
+                      - button "..." [ref=f2e653]
+                  - row [ref=f2e654]:
+                    - cell "Reporting Method" [ref=f2e655]
+                    - cell "Select Method" [ref=f2e656]:
+                      - combobox [ref=f2e657]:
+                        - option "Select Method" [selected]
+                        - option "Direct"
+                        - option "Indirect"
+                  - row [ref=f2e658]:
+                    - cell [ref=f2e659]
+                    - cell [ref=f2e660]
+              - generic [ref=f2e661]:
+                - button "Save" [ref=f2e662]
+                - button "Reset" [ref=f2e663]
+          - generic [ref=f2e668]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e669]:
+          - generic [ref=f2e675]:
+            - heading "Skills" [level=2] [ref=f2e677]
+            - generic [ref=f2e679]:
+              - table [ref=f2e680]:
+                - rowgroup [ref=f2e681]:
+                  - row [ref=f2e682]:
+                    - cell "Skill" [ref=f2e683]
+                    - cell "-----------Select Skill-------------" [ref=f2e684]:
+                      - combobox [ref=f2e685]:
+                        - option "-----------Select Skill-------------" [selected]
+                        - option "absb"
+                        - option "AutomationTestingWithPlaywright"
+                        - option "C languages"
+                        - option "cloud"
+                        - option "clouds"
+                        - option "Core Java"
+                        - option "Dotnet"
+                        - option "Full Stack Tester"
+                        - option "Full Stack Testing"
+                        - option "gayatriproject"
+                        - option "Gen AI"
+                        - option "hello"
+                        - option "java"
+                        - option "Java Fullstack"
+                        - option "JavaAndSelenium"
+                        - option "javascript"
+                        - option "javascropt"
+                        - option "javaselenium"
+                        - option "jeafhl"
+                        - option "Jhansi"
+                        - option "KAMPATI GOVARDHAN REDDY"
+                        - option "kjeskaf"
+                        - option "ksk_playwright and java"
+                        - option "k_playwright"
+                        - option "manAu"
+                        - option "Manual Tester"
+                        - option "manual testing"
+                        - option "MSI"
+                        - option "nanda sai"
+                        - option "playwirght"
+                        - option "Playwright Course"
+                        - option "Playwright testing"
+                        - option "python"
+                        - option "QaYrbwjo"
+                        - option "sai"
+                        - option "Selenium with java"
+                        - option "seleniums"
+                        - option "Seleniuuuuuum"
+                        - option "simran"
+                        - option "SJPT"
+                        - option "skill001"
+                        - option "SKLKN01"
+                        - option "sql"
+                        - option "SSKK"
+                        - option "sss"
+                        - option "sureshit"
+                        - option "s_project"
+                        - option "thgfgjb"
+                        - option "TS"
+                        - option "virat kohli"
+                  - row [ref=f2e686]:
+                    - cell "Years of Experience" [ref=f2e687]
+                    - cell [ref=f2e688]:
+                      - textbox [ref=f2e689]
+                    - cell [ref=f2e690]
+                  - row [ref=f2e691]:
+                    - cell "Comments" [ref=f2e692]
+                    - cell [ref=f2e693]:
+                      - textbox [ref=f2e694]
+                    - cell [ref=f2e695]
+                  - row [ref=f2e696]:
+                    - cell [ref=f2e697]
+                    - cell [ref=f2e698]
+              - generic [ref=f2e699]:
+                - button "Save" [ref=f2e700]
+                - button "Reset" [ref=f2e701]
+          - generic [ref=f2e706]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e707]:
+          - generic [ref=f2e713]:
+            - heading "Work experience" [level=2] [ref=f2e715]
+            - generic [ref=f2e717]:
+              - table [ref=f2e718]:
+                - rowgroup [ref=f2e719]:
+                  - row [ref=f2e720]:
+                    - cell "Employer" [ref=f2e721]
+                    - cell [ref=f2e722]:
+                      - textbox [ref=f2e723]
+                    - cell [ref=f2e724]
+                    - cell "Start Date" [ref=f2e725]
+                    - cell [ref=f2e726]:
+                      - textbox [ref=f2e727]: YYYY-mm-DD
+                      - button [ref=f2e728]
+                  - row [ref=f2e729]:
+                    - cell "Job Title" [ref=f2e730]
+                    - cell [ref=f2e731]:
+                      - textbox [ref=f2e732]
+                    - cell [ref=f2e733]
+                    - cell "End Date" [ref=f2e734]
+                    - cell [ref=f2e735]:
+                      - textbox [ref=f2e736]: YYYY-mm-DD
+                      - button [ref=f2e737]
+                  - row [ref=f2e738]:
+                    - cell "Comments" [ref=f2e739]
+                    - cell [ref=f2e740]:
+                      - textbox [ref=f2e741]
+                    - cell [ref=f2e742]
+                    - cell "Internal" [ref=f2e743]
+                    - cell [ref=f2e744]:
+                      - checkbox [ref=f2e745]
+              - generic [ref=f2e746]:
+                - button "Save" [ref=f2e747]
+                - button "Reset" [ref=f2e748]
+          - generic [ref=f2e753]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e754]:
+          - generic [ref=f2e760]:
+            - heading "Tax Exemptions" [level=2] [ref=f2e762]
+            - table [ref=f2e763]:
+              - rowgroup [ref=f2e764]:
+                - row [ref=f2e765]:
+                  - cell [ref=f2e766]:
+                    - strong [ref=f2e767]: Federal Income Tax
+                - row [ref=f2e768]:
+                  - cell "Status" [ref=f2e769]
+                  - cell "--Select--" [ref=f2e770]:
+                    - combobox [ref=f2e771]:
+                      - option "--Select--" [selected]
+                      - option "Married"
+                      - option "Single"
+                      - option "Non Resident Alien"
+                      - option "Not Applicable"
+                  - cell [ref=f2e772]
+                  - cell "Exemptions" [ref=f2e773]
+                  - cell [ref=f2e774]:
+                    - textbox [ref=f2e775]
+                - row [ref=f2e776]:
+                  - cell [ref=f2e777]:
+                    - strong [ref=f2e778]: State Income Tax
+                - row [ref=f2e779]:
+                  - cell "State" [ref=f2e780]
+                  - cell "--- Select State ---" [ref=f2e781]:
+                    - combobox [ref=f2e782]:
+                      - option "--- Select State ---" [selected]
+                      - option "Alaska"
+                      - option "Alabama"
+                      - option "American Samoa"
+                      - option "Arizona"
+                      - option "Arkansas"
+                      - option "California"
+                      - option "Colorado"
+                      - option "Connecticut"
+                      - option "Delaware"
+                      - option "District of Columbia"
+                      - option "Federated States of Micronesia"
+                      - option "Florida"
+                      - option "Georgia"
+                      - option "Guam"
+                      - option "Hawaii"
+                      - option "Idaho"
+                      - option "Illinois"
+                      - option "Indiana"
+                      - option "Iowa"
+                      - option "Kansas"
+                      - option "Kentucky"
+                      - option "Louisiana"
+                      - option "Maine"
+                      - option "Marshall Islands"
+                      - option "Maryland"
+                      - option "Massachusetts"
+                      - option "Michigan"
+                      - option "Minnesota"
+                      - option "Mississippi"
+                      - option "Missouri"
+                      - option "Montana"
+                      - option "Nebraska"
+                      - option "Nevada"
+                      - option "New Hampshire"
+                      - option "New Jersey"
+                      - option "New Mexico"
+                      - option "New York"
+                      - option "North Carolina"
+                      - option "North Dakota"
+                      - option "Northern Mariana Islands"
+                      - option "Ohio"
+                      - option "Oklahoma"
+                      - option "Oregon"
+                      - option "Palau"
+                      - option "Pennsylvania"
+                      - option "Puerto Rico"
+                      - option "Rhode Island"
+                      - option "South Carolina"
+                      - option "South Dakota"
+                      - option "Tennessee"
+                      - option "Texas"
+                      - option "Utah"
+                      - option "Vermont"
+                      - option "Virgin Islands"
+                      - option "Virginia"
+                      - option "Washington"
+                      - option "West Virginia"
+                      - option "Wisconsin"
+                      - option "Wyoming"
+                      - option "Armed Forces Africa"
+                      - option "Armed Forces Americas (except Canada)"
+                      - option "Armed Forces Canada"
+                      - option "Armed Forces Europe"
+                      - option "Armed Forces Middle East"
+                      - option "Armed Forces Pacific"
+                  - cell [ref=f2e783]
+                  - cell "Status" [ref=f2e784]
+                  - cell "--Select--" [ref=f2e785]:
+                    - combobox [ref=f2e786]:
+                      - option "--Select--" [selected]
+                      - option "Married"
+                      - option "Single"
+                      - option "Non Resident Alien"
+                      - option "Not Applicable"
+                - row [ref=f2e787]:
+                  - cell "Exemptions" [ref=f2e788]
+                  - cell [ref=f2e789]:
+                    - textbox [ref=f2e790]
+                - row [ref=f2e791]:
+                  - cell "Unemployment State" [ref=f2e792]
+                  - cell "--- Select State ---" [ref=f2e793]:
+                    - combobox [ref=f2e794]:
+                      - option "--- Select State ---" [selected]
+                      - option "Alaska"
+                      - option "Alabama"
+                      - option "American Samoa"
+                      - option "Arizona"
+                      - option "Arkansas"
+                      - option "California"
+                      - option "Colorado"
+                      - option "Connecticut"
+                      - option "Delaware"
+                      - option "District of Columbia"
+                      - option "Federated States of Micronesia"
+                      - option "Florida"
+                      - option "Georgia"
+                      - option "Guam"
+                      - option "Hawaii"
+                      - option "Idaho"
+                      - option "Illinois"
+                      - option "Indiana"
+                      - option "Iowa"
+                      - option "Kansas"
+                      - option "Kentucky"
+                      - option "Louisiana"
+                      - option "Maine"
+                      - option "Marshall Islands"
+                      - option "Maryland"
+                      - option "Massachusetts"
+                      - option "Michigan"
+                      - option "Minnesota"
+                      - option "Mississippi"
+                      - option "Missouri"
+                      - option "Montana"
+                      - option "Nebraska"
+                      - option "Nevada"
+                      - option "New Hampshire"
+                      - option "New Jersey"
+                      - option "New Mexico"
+                      - option "New York"
+                      - option "North Carolina"
+                      - option "North Dakota"
+                      - option "Northern Mariana Islands"
+                      - option "Ohio"
+                      - option "Oklahoma"
+                      - option "Oregon"
+                      - option "Palau"
+                      - option "Pennsylvania"
+                      - option "Puerto Rico"
+                      - option "Rhode Island"
+                      - option "South Carolina"
+                      - option "South Dakota"
+                      - option "Tennessee"
+                      - option "Texas"
+                      - option "Utah"
+                      - option "Vermont"
+                      - option "Virgin Islands"
+                      - option "Virginia"
+                      - option "Washington"
+                      - option "West Virginia"
+                      - option "Wisconsin"
+                      - option "Wyoming"
+                      - option "Armed Forces Africa"
+                      - option "Armed Forces Americas (except Canada)"
+                      - option "Armed Forces Canada"
+                      - option "Armed Forces Europe"
+                      - option "Armed Forces Middle East"
+                      - option "Armed Forces Pacific"
+                - row [ref=f2e795]:
+                  - cell "Work State" [ref=f2e796]
+                  - cell "--- Select State ---" [ref=f2e797]:
+                    - combobox [ref=f2e798]:
+                      - option "--- Select State ---" [selected]
+                      - option "Alaska"
+                      - option "Alabama"
+                      - option "American Samoa"
+                      - option "Arizona"
+                      - option "Arkansas"
+                      - option "California"
+                      - option "Colorado"
+                      - option "Connecticut"
+                      - option "Delaware"
+                      - option "District of Columbia"
+                      - option "Federated States of Micronesia"
+                      - option "Florida"
+                      - option "Georgia"
+                      - option "Guam"
+                      - option "Hawaii"
+                      - option "Idaho"
+                      - option "Illinois"
+                      - option "Indiana"
+                      - option "Iowa"
+                      - option "Kansas"
+                      - option "Kentucky"
+                      - option "Louisiana"
+                      - option "Maine"
+                      - option "Marshall Islands"
+                      - option "Maryland"
+                      - option "Massachusetts"
+                      - option "Michigan"
+                      - option "Minnesota"
+                      - option "Mississippi"
+                      - option "Missouri"
+                      - option "Montana"
+                      - option "Nebraska"
+                      - option "Nevada"
+                      - option "New Hampshire"
+                      - option "New Jersey"
+                      - option "New Mexico"
+                      - option "New York"
+                      - option "North Carolina"
+                      - option "North Dakota"
+                      - option "Northern Mariana Islands"
+                      - option "Ohio"
+                      - option "Oklahoma"
+                      - option "Oregon"
+                      - option "Palau"
+                      - option "Pennsylvania"
+                      - option "Puerto Rico"
+                      - option "Rhode Island"
+                      - option "South Carolina"
+                      - option "South Dakota"
+                      - option "Tennessee"
+                      - option "Texas"
+                      - option "Utah"
+                      - option "Vermont"
+                      - option "Virgin Islands"
+                      - option "Virginia"
+                      - option "Washington"
+                      - option "West Virginia"
+                      - option "Wisconsin"
+                      - option "Wyoming"
+                      - option "Armed Forces Africa"
+                      - option "Armed Forces Americas (except Canada)"
+                      - option "Armed Forces Canada"
+                      - option "Armed Forces Europe"
+                      - option "Armed Forces Middle East"
+                      - option "Armed Forces Pacific"
+            - generic [ref=f2e799]:
+              - button "Save" [ref=f2e800]
+              - button "Reset" [ref=f2e801]
+          - generic [ref=f2e806]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e807]:
+          - generic [ref=f2e813]:
+            - heading "Direct Deposit" [level=2] [ref=f2e815]
+            - generic [ref=f2e817]:
+              - table [ref=f2e818]:
+                - rowgroup [ref=f2e819]:
+                  - row [ref=f2e820]:
+                    - cell "Account" [ref=f2e821]
+                    - cell [ref=f2e822]
+                    - cell [ref=f2e823]:
+                      - textbox [ref=f2e824]
+                  - row [ref=f2e825]:
+                    - cell "Account Type" [ref=f2e826]
+                    - cell [ref=f2e827]
+                    - cell "Checking Savings" [ref=f2e828]:
+                      - text: Checking
+                      - radio [checked] [ref=f2e829]
+                      - text: Savings
+                      - radio [ref=f2e830]
+                  - row [ref=f2e831]:
+                    - cell "Routing Number" [ref=f2e832]
+                    - cell [ref=f2e833]
+                    - cell [ref=f2e834]:
+                      - textbox [ref=f2e835]
+                  - row [ref=f2e836]:
+                    - cell "Amount" [ref=f2e837]
+                    - cell [ref=f2e838]
+                    - cell [ref=f2e839]:
+                      - textbox [ref=f2e840]
+                  - row [ref=f2e841]:
+                    - cell "Transaction Type" [ref=f2e842]
+                    - cell [ref=f2e843]
+                    - cell "--Select--" [ref=f2e844]:
+                      - combobox [ref=f2e845]:
+                        - option "--Select--" [selected]
+                        - option "Blank"
+                        - option "Percentage"
+                        - option "Flat"
+                        - option "Flat -"
+                  - row:
+                    - cell
+              - generic [ref=f2e846]:
+                - button "Save" [ref=f2e847]
+                - button "Reset" [ref=f2e848]
+          - generic [ref=f2e853]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e854]:
+          - generic [ref=f2e860]:
+            - heading "Custom" [level=2] [ref=f2e862]
+            - table [ref=f2e863]:
+              - rowgroup [ref=f2e864]:
+                - row [ref=f2e865]:
+                  - cell "TT" [ref=f2e866]
+                  - cell [ref=f2e867]
+                  - cell [ref=f2e868]:
+                    - textbox [ref=f2e869]
+                - row [ref=f2e870]:
+                  - cell "gftuyft" [ref=f2e871]
+                  - cell [ref=f2e872]
+                  - cell [ref=f2e873]:
+                    - textbox [ref=f2e874]
+                - row [ref=f2e875]:
+                  - cell "gftuyfta" [ref=f2e876]
+                  - cell [ref=f2e877]
+                  - cell [ref=f2e878]:
+                    - textbox [ref=f2e879]
+            - generic [ref=f2e880]:
+              - button "Save" [ref=f2e881]
+              - button "Reset" [ref=f2e882]
+          - generic [ref=f2e887]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e888]:
+          - generic [ref=f2e894]:
+            - heading "Photograph" [level=2] [ref=f2e896]
+            - generic [ref=f2e897]:
+              - generic [ref=f2e898]:
+                - img "Employee Photo" [ref=f2e899] [cursor=pointer]
+                - text: Click on the photo to see the full size image
+              - generic [ref=f2e900]: Select a Photo
+              - button "Select a Photo [1M Max] [Dimensions 100x120]" [ref=f2e901]
+              - generic [ref=f2e902]: "[1M Max] [Dimensions 100x120]"
+              - button "Save" [ref=f2e904]
+          - generic [ref=f2e909]: Fields marked with an asterisk * are required.
+        - generic [ref=f2e910]:
+          - img "Click to edit photo" [ref=f2e911]
+          - link "Kanchan selenium" [ref=f2e912] [cursor=pointer]:
+            - /url: "#"
+  - link "SureshIT" [ref=f1e313] [cursor=pointer]:
+    - /url: "#"
+```
+
+# Test source
+
+```ts
+  1  | 
+  2  | import { Global } from "./Global";
+  3  | 
+  4  | //To provide all reuseable functions and methods related to whole applications
+  5  | export class general extends Global{
+  6  | 
+  7  |     async openApplication()
+  8  |     {
+  9  |      await this.page.goto(this.url);
+  10 |      console.log('Application opened');
+  11 | 
+  12 |     }
+  13 | 
+  14 |     async loginbutton()
+  15 |     {
+  16 |         await this.page.locator(this.textusername).fill(this.username);
+  17 |         await this.page.locator(this.textpassword).fill(this.password);
+  18 |         await this.page.locator(this.login).click();
+  19 |         console.log('login done');
+  20 |     }
+  21 |     async logoutLink()
+  22 |     {
+  23 |         await this.page.getByRole('link',{name: 'Logout'}).click();
+  24 |         console.log('logout done');
+  25 |     }
+  26 | 
+  27 |     async pim_button()
+  28 |     {
+  29 |        await this.page.locator(this.pimtab).hover();
+  30 |        await this.page.waitForTimeout(3000);
+  31 |        console.log('pim-hover done');
+  32 | 
+  33 |     }
+  34 |  
+  35 |    async AddEmployee_button() 
+  36 |    {
+  37 |     await this.page.getByRole('link', { name: 'Add Employee' }).waitFor({state:'visible'});
+  38 |     await this.page.getByRole('link', { name: 'Add Employee' }).click();
+  39 |     console.log('clicked on add employee button');
+  40 |    }
+  41 | 
+  42 | 
+  43 |     async BtnSave_AddEmployee() 
+  44 |     {
+  45 |         const frame= this.page.frameLocator("//iframe[@id='rightMenu']");
+  46 |         await frame.locator(this.lname).fill(this.lastname);
+  47 |         await frame.locator(this.fname).fill(this.firstname);
+  48 |         await frame.locator(this.savebtn).click();
+  49 |         await this.page.waitForTimeout(3000);
+  50 |         console.log('Saved')
+  51 |     }
+  52 | 
+  53 |     async editkey_personalDetails()
+  54 |     {    
+  55 |     const frame = this.page.frameLocator("//iframe[@id='rightMenu']");
+  56 |     await frame.locator(this.editbtn).click();
+  57 |     console.log('clicked on edit button');
+  58 | 
+  59 |     }
+  60 |     async updatEmp()
+  61 |     {
+  62 |         const frame = this.page.frameLocator("//iframe[@id='rightMenu']");
+  63 |        await frame.locator(this.lastnameedit).fill(this.updatedlastname);
+  64 |         console.log('update lastname');
+  65 |     }
+  66 | 
+  67 |     
+  68 |     async Savebtn_personalDetail()
+  69 |     {
+  70 |          const frame = this.page.frameLocator("//iframe[@id='rightMenu']");
+> 71 |         await frame.locator(this.personalDetailSavebtn).click();
+     |                                                         ^ Error: locator.click: Error: strict mode violation: locator('.savebutton') resolved to 22 elements:
+  72 |         console.log('personal details updated');
+  73 |     }
+  74 | }
+```
