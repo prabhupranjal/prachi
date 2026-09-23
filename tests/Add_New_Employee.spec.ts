@@ -11,4 +11,5 @@ test('Add_New_Employee',async({page})=>{
     await obj.AddEmployee_button();
     await obj.BtnSave_AddEmployee();
     await obj.logoutLink();
+    console.log('Execution done from GitHub Actions');
 })
